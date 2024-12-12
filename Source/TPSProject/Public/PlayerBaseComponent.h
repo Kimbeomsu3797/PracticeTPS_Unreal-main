@@ -17,8 +17,9 @@ class TPSPROJECT_API UPlayerBaseComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UPlayerBaseComponent();
-
+	virtual void InitializeComponent() override;
 protected:
+	
 	// Called when the game starts
 	virtual void BeginPlay() override;
 

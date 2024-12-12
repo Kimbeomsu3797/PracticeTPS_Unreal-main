@@ -79,7 +79,7 @@ ATPSPlayer::ATPSPlayer()
 	
 	
 	playerMove = CreateDefaultSubobject<UPlayerMove>(TEXT("PlayerMove"));
-	playerFire = CreateDefaultSubobject<UPlayerFire>(TEXT("PlayerFire"));
+	//playerFire = CreateDefaultSubobject<UPlayerFire>(TEXT("PlayerFire"));
 }
 
 // Called when the game starts or when spawned
@@ -119,9 +119,11 @@ void ATPSPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 	if (PlayerInput)
 	{
+
 		// 컴포넌트에서 입력 바인딩 처리하도록 호출
-		playerMove->SetupInputBinding(PlayerInput);
-		playerFire->SetupInputBinding(PlayerInput);
+		onInputBindingDelegate.Broadcast((PlayerInput));
+		//playerMove->SetupInputBinding(PlayerInput);
+		//playerFire->SetupInputBinding(PlayerInput);
 		
 	}
 }
