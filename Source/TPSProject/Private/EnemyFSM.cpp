@@ -161,7 +161,7 @@ void UEnemyFSM::AttackState()
 
 	if (currentTime > attackDelayTime)
 	{
-		PRINT_LOG(TEXT("Attack!!!"));
+		//PRINT_LOG(TEXT("Attack!!!"));
 		//��� �ð� �ʱ�ȭ
 		currentTime = 0;
 		anim->bAttackPlay = true;

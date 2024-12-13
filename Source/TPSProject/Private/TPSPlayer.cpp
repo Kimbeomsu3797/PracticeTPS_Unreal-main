@@ -8,6 +8,8 @@
 #include "EnhancedInputComponent.h"
 #include "PlayerMove.h"
 #include "PlayerFire.h"
+#include "TPSProject.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 ATPSPlayer::ATPSPlayer()
@@ -100,7 +102,24 @@ void ATPSPlayer::BeginPlay()
 		}
 	}
 
-	
+	hp = initialHp;	
+}
+
+void ATPSPlayer::OnHitEvent()
+{
+	PRINT_LOG(TEXT("Damaged !!!!!!"));
+	hp--;
+	if (hp <=0)
+	{
+		PRINT_LOG(TEXT("Player is dead!"));
+		OnGameOver();
+	}
+}
+
+void ATPSPlayer::OnGameOver_Implementation()
+{
+	//게임 오버 시 일시 정지
+	UGameplayStatics::SetGamePaused(GetWorld(),true);
 }
 
 // Called every frame
